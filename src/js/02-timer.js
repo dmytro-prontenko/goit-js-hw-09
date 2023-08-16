@@ -71,7 +71,7 @@ function onStartCountdownClick(event) {
       console.log(timeRemain);
     } else {
       clearInterval(interval);
-      Notiflix.Report.success('Вся русня здохла!', '', 'Ура!');
+      Notiflix.Report.success('Вся русня здохла!', '', 'Слава Україні!');
     }
   }, 1000);
 }

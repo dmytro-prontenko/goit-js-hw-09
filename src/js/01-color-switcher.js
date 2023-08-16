@@ -1,5 +1,31 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
+import { getRandomHexColor } from './helpers';
+const refs = {
+  body: document.body,
+  start: document.querySelector('[data-start'),
+  stop: document.querySelector('[data-stop'),
+};
+let isActive = false;
+let currentTimer;
+refs.start.disabled = false;
+refs.stop.disabled = true;
+
+refs.start.addEventListener('click', onStartClick);
+refs.stop.addEventListener('click', onEndClick);
+
+function onStartClick(event) {
+  if (isActive) return;
+  currentTimer = setInterval(() => {
+    isActive = true;
+    refs.body.style.backgroundColor = getRandomHexColor();
+    refs.start.disabled = true;
+    refs.stop.disabled = false;
+  }, 1000);
+  refs.start;
+}
+
+function onEndClick(event) {
+  clearInterval(currentTimer);
+  refs.start.disabled = false;
+  refs.stop.disabled = true;
+  isActive = false;
 }
