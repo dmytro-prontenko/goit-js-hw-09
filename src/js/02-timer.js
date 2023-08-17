@@ -8,8 +8,8 @@ import Notiflix from 'notiflix';
 import { convertMs } from './helpers';
 
 Notiflix.Report.info(
-  'Таймер відліку до смерті русні',
-  'Таймер зворотнього з розряду "What if"',
+  'Таймер зворотнього відліку до смерті русні',
+  '',
   'Розпочнемо!'
 );
 
