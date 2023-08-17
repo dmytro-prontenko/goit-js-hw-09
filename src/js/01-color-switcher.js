@@ -1,3 +1,5 @@
+'use strict';
+
 import { getRandomHexColor } from './helpers';
 const refs = {
   body: document.body,
