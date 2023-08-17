@@ -8,8 +8,8 @@ import Notiflix from 'notiflix';
 import { convertMs } from './helpers';
 
 Notiflix.Report.info(
-  'Таймер зворотнього відліку до смерті русні',
   '',
+  'Таймер зворотнього відліку до смерті русні',
   'Розпочнемо!'
 );
 
@@ -22,9 +22,11 @@ const refs = {
   minutes: document.querySelector('[data-minutes]'),
   seconds: document.querySelector('[data-seconds]'),
 };
+refs.startCountdown.disabled = true;
 
 let isActive = false;
 let selectedDate = '';
+refs.startCountdown.disabled = true;
 
 refs.startCountdown.addEventListener('click', onStartCountdownClick);
 
@@ -50,6 +52,7 @@ flatpickr(refs.datePicker, {
       );
       refs.startCountdown.disabled = true;
     } else {
+      refs.startCountdown.disabled = false;
       Notiflix.Notify.success('Запуску відліку до найбільшого свята готовий!');
       refs.startCountdown.disabled = false;
     }
@@ -57,6 +60,7 @@ flatpickr(refs.datePicker, {
 });
 
 function onStartCountdownClick(event) {
+  refs.startCountdown.disabled = true;
   if (isActive) {
     Notiflix.Notify.warning(
       'Таймер вже запущено, дочекайтесь закінчення роботи поточного і повторіть спробу'

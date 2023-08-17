@@ -16,8 +16,8 @@ refs.stop.addEventListener('click', onEndClick);
 
 function onStartClick(event) {
   if (isActive) return;
+  isActive = true;
   currentTimer = setInterval(() => {
-    isActive = true;
     refs.body.style.backgroundColor = getRandomHexColor();
     refs.start.disabled = true;
     refs.stop.disabled = false;
