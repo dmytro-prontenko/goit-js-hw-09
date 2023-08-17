@@ -7,6 +7,12 @@ import { convertMs } from './helpers';
 import Notiflix from 'notiflix';
 import { convertMs } from './helpers';
 
+Notiflix.Report.info(
+  'Таймер відліку до смерті русні',
+  'Таймер зворотнього з розряду "What if"',
+  'Розпочнемо!'
+);
+
 const refs = {
   datePicker: document.querySelector('#datetime-picker'),
   startCountdown: document.querySelector('button'),
