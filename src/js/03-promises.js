@@ -9,36 +9,34 @@ const refs = {
   createPromisesBtn: document.querySelector('[type="submit"]'),
 };
 
+console.log(refs.amount);
+
 refs.form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   const amount = Number(refs.amount.value);
-  console.log(event.currentTarget);
   event.preventDefault();
   for (let i = 1; i <= amount; i++) {
     let totalDelay =
       Number(refs.delay.value) + Number(refs.step.value) * (i - 1);
     setTimeout(() => {
-      createPromise(i, totalDelay)
-        .then(({ position, delay }) =>
-          Notiflix.Notify.success(
-            `✅ Fulfilled promise ${position} in ${delay}`
-          )
-        )
-        .catch(({ position, delay }) =>
-          Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}`)
-        );
+      createPromise(i, totalDelay);
     }, totalDelay);
   }
+  refs.form.reset();
 }
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
 
   if (shouldResolve) {
-    return new Promise(resolve({ position, delay }));
+    return new Promise(resolve => {
+      Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}`);
+    });
   } else {
     // Reject
-    return new Promise(reject({ position, delay }));
+    return new Promise(reject => {
+      Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}`);
+    });
   }
 }
